@@ -21,7 +21,7 @@ function configurarUploadImagem() {
 
     if (!inputImagem || !previewImagem) return;
 
-    // Disparar seletor ao clicar no label ou no card da imagem
+
     if (labelFile) {
         labelFile.addEventListener('click', () => inputImagem.click());
     }
