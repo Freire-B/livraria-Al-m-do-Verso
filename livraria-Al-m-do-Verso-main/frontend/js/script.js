@@ -29,7 +29,7 @@ function configurarUploadImagem() {
     if (dropZone) {
         dropZone.addEventListener('click', () => inputImagem.click());
 
-        // Eventos de drag & drop
+       
         ['dragenter', 'dragover'].forEach(eventName => {
             dropZone.addEventListener(eventName, (e) => {
                 e.preventDefault();
@@ -54,7 +54,7 @@ function configurarUploadImagem() {
         });
     }
 
-    // Leitura do arquivo selecionado via botão
+    
     inputImagem.addEventListener('change', (e) => {
         if (e.target.files && e.target.files[0]) {
             carregarEExibirImagem(e.target.files[0]);
