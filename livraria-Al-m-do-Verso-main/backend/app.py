@@ -8,7 +8,7 @@ from models import MensagemContato
 app = Flask(__name__)
 CORS(app)
 
-# Diretório para armazenamento dos arquivos de imagem enviados
+
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -31,7 +31,7 @@ def detalhe_livro(id_livro):
         return jsonify(livro.to_dict()), 200
     return jsonify({"erro": "Livro não encontrado"}), 404
 
-# Endpoint para receber o arquivo de imagem via formulário (POST Multipart)
+
 @app.route("/api/upload", methods=["POST"])
 def upload_imagem():
     if "imagem" not in request.files:
@@ -48,7 +48,7 @@ def upload_imagem():
     url_imagem = f"http://127.0.0.1:5000/uploads/{filename}"
     return jsonify({"mensagem": "Imagem enviada com sucesso!", "url": url_imagem}), 201
 
-# Endpoint para servir as imagens enviadas
+
 @app.route("/uploads/<filename>", methods=["GET"])
 def carregar_imagem(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
